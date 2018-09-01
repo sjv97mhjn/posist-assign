@@ -8,7 +8,7 @@
   <button onclick="createGenesis()">Create Genesis Node</button><br>
   <button onclick="createNode()">Create Child Node</button><br>
     <button onclick="createMultipleNode()">Create Multiple Child Node</button><br>
-    <button id="show">Show Tree</button><br>
+    <button id="show">Show tree</button><br>
     <div id="Genesis"></div>
     <div class="element"></div>
 
@@ -20,7 +20,7 @@
 var count = 0 ;	
 
 
-var Tree = new Array();
+var tree = new Array();
 var Genesis ; 
 /*
 var Node = {  
@@ -50,26 +50,27 @@ $(function () {
 
 console.log(Genesis);
  var newHTML2 = [];
-   newHTML2.push('Genesis <br> <span>' + Genesis.ownerName + '</span> <br> ');   
+   newHTML2.push('Genesis Is <span>' + Genesis.ownerName + '</span> <br> ');   
  $("#Genesis").html(newHTML2.join(""));
 
 
-// Rest Of Tree
-var array = Tree;
+// Rest Of tree
+var array = tree;
 var newHTML = [];
   for (var i = 0; i < array.length; i++) {
         // console.log(array[i]);
-       var arr = Tree[i];
-       
-       newHTML.push('array'); 
-     newHTML.push(' <br> <span>' + array[i]['ownerId'] + '</span> <br> ');
-    newHTML.push(' <br> <span>' + array[i]['value'] + '</span> <br> ');
-    newHTML.push(' <br> <span>' + array[i]['ownerName'] + '</span> <br> ');
-    	 newHTML.push('<br><br><br>');
+       var arr = tree[i];
+       console.log(arr);
+     newHTML.push(' <br> <span> Owner Id : ' + array[i]['ownerId'] + '</span>  ');
+    newHTML.push(' <br> <span> Value : ' + array[i]['value'] + '</span>');
+    newHTML.push(' <br> <span> Owner Name : ' + array[i]['ownerName'] + '</span> ');
+    
+    newHTML.push('<br>#####');
+    newHTML.push('Its Childs : - ');
     	    for (var j = 0; j < array.length; j++) {
 
             if(array[j]['referenceNodeId']==array[i]['ownerId']){ 
-            		 newHTML.push('&nbsp; <span>' + array[j]['ownerName'] + '</span>');
+            		 newHTML.push('&nbsp; <span> Child Name :' + array[j]['ownerName'] + '</span>');
    
    	         }
             
@@ -77,7 +78,7 @@ var newHTML = [];
     	};
 }
 
-    newHTML.push('<br><br><br>');
+    newHTML.push('#####<br>');
      $(".element").html(newHTML.join(""));
 })
 
@@ -114,7 +115,7 @@ function createGenesis() {
 	  HashValue : String 
 
 };
-			Tree.push(Node);
+			tree.push(Genesis);
         		count=count+1;
 
 
@@ -154,7 +155,7 @@ function createNode() {
 	 
 
         	
-        	Tree.push(Node);
+        	tree.push(Node);
         		count=count+1;
         	//console.log(Node);
 }
@@ -199,7 +200,7 @@ for(var i=0;i<n;i++){
 	 
 
         	
-        	Tree.push(Node);
+        	tree.push(Node);
         		count=count+1;
         	//console.log(Node);
 }
