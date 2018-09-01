@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title></title>
+</head>
+<body>
+  <button onclick="createGenesis()">Create Genesis Node</button><br>
+  <button onclick="createNode()">Create Child Node</button><br>
+    <button onclick="createMultipleNode()">Create Multiple Child Node</button><br>
+    <button id="show">Show Tree</button><br>
+    <div id="Genesis"></div>
+    <div class="element"></div>
+
+</body>
+
+
+
+<script type="text/javascript">
+var count = 0 ;	
+
+
+var Tree = new Array();
+var Genesis ; 
+/*
+var Node = {  
+	  timestamp : new Date(),
+
+	  		ownerId : String , 
+	  		value : String ,
+	  		ownerName :  String ,
+	  		Hash : String ,
+	
+	  nodeNumber  : Number , 
+	  nodeId  : String , 
+	  referenceNodeId : String ,
+	  childREferenceNodeId : [String] ,
+	  genesisREferenceNodeId : String ,
+	  HashValue : String 
+
+}  
+
+*/
+
+$(function () { 
+
+    $('#show').click(function(){ 
+ 
+//Genesis 
+
+console.log(Genesis);
+ var newHTML2 = [];
+   newHTML2.push('Genesis <br> <span>' + Genesis.ownerName + '</span> <br> ');   
+ $("#Genesis").html(newHTML2.join(""));
+
+
+// Rest Of Tree
+var array = Tree;
+var newHTML = [];
+  for (var i = 0; i < array.length; i++) {
+        // console.log(array[i]);
+       var arr = Tree[i];
+       
+       newHTML.push('array'); 
+     newHTML.push(' <br> <span>' + array[i]['ownerId'] + '</span> <br> ');
+    newHTML.push(' <br> <span>' + array[i]['value'] + '</span> <br> ');
+    newHTML.push(' <br> <span>' + array[i]['ownerName'] + '</span> <br> ');
+    	 newHTML.push('<br><br><br>');
+    	    for (var j = 0; j < array.length; j++) {
+
+            if(array[j]['referenceNodeId']==array[i]['ownerId']){ 
+            		 newHTML.push('&nbsp; <span>' + array[j]['ownerName'] + '</span>');
+   
+   	         }
+            
+
+    	};
+}
+
+    newHTML.push('<br><br><br>');
+     $(".element").html(newHTML.join(""));
+})
+
+
+  
+ 
+   
+} );
+
+
+function createGenesis() {  
+	
+	var x = prompt("Enter Id of  Node");
+	x= parseInt(x);
+
+    var y = prompt("Enter Value of Node");
+    y = parseInt(y); 
+
+    var z = prompt("Enter Owner Name of Node");
+
+
+    Genesis = {  
+	  timestamp : new Date(),
+
+	  		ownerId : x , 
+	  		value : y ,
+	  		ownerName :  z ,
+	  		Hash : "abc" ,
+	
+	  nodeNumber  : count , 
+	  //nodeId  : String , 
+	  // childREferenceNodeId : [String] ,
+	  genesisREferenceNodeId : 0 ,
+	  HashValue : String 
+
+};
+			Tree.push(Node);
+        		count=count+1;
+
+
+    }
+
+function createNode() {  
+	var p = prompt("Enter Parent Node");
+	//p= parseInt(x);
+	//alert(x);
+
+	var x = prompt("Enter Id of  Node");
+	x= parseInt(x);
+
+    var y = prompt("Enter Value of Node");
+    y = parseInt(y); 
+
+    var z = prompt("Enter Owner Name of Node");
+
+
+   var Node = {  
+	  timestamp : new Date(),
+
+	  		ownerId : x , 
+	  		value : y ,
+	  		ownerName :  z ,
+	  		Hash : "abc" ,
+	
+	  nodeNumber  : count , 
+	  //nodeId  : String , 
+	  referenceNodeId : p ,
+	  // childREferenceNodeId : [String] ,
+	  genesisREferenceNodeId : 0 ,
+	  HashValue : String 
+
+}  
+
+	 
+
+        	
+        	Tree.push(Node);
+        		count=count+1;
+        	//console.log(Node);
+}
+
+function createMultipleNode() {  
+
+		var n = prompt("Enter Number of  Nodes");
+		n= parseInt(n);
+  
+for(var i=0;i<n;i++){
+
+	var p = prompt("Enter Parent Node of " + n);
+	//p= parseInt(x);
+	//alert(x);
+
+	var x = prompt("Enter Id of  Node " + n);
+	x= parseInt(x);
+
+    var y = prompt("Enter Value of Node " + n);
+    y = parseInt(y); 
+
+    var z = prompt("Enter Owner Name of Node "  + n);
+
+
+   var Node = {  
+	  timestamp : new Date(),
+
+	  		ownerId : x , 
+	  		value : y ,
+	  		ownerName :  z ,
+	  		Hash : "abc" ,
+	
+	  nodeNumber  : count , 
+	  //nodeId  : String , 
+	  referenceNodeId : p ,
+	  // childREferenceNodeId : [String] ,
+	  genesisREferenceNodeId : 0 ,
+	  HashValue : String 
+
+}  
+
+	 
+
+        	
+        	Tree.push(Node);
+        		count=count+1;
+        	//console.log(Node);
+}
+
+	
+}
+
+
+
+
+
+
+
+
+
+
+console.log("Do it Faster");
+</script>
+
+</html>
